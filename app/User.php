@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->morphOne('App\Image', 'imageable');
     }
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

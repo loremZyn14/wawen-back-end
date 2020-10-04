@@ -23,4 +23,12 @@ class Product extends Model
     {
         return $this->morphOne('App\Image', 'imageable');
     }
+
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class,'order_product_details');
+    }
+
+
 }
