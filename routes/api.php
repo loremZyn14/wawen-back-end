@@ -29,5 +29,6 @@ Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
 Route::resource('orders', 'OrderController');
 
+Route::post('/customers/{user}/carts','CartController@store');
 
-Route::get('/dummy', 'DummyController@test');
+
