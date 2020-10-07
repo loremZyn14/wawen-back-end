@@ -29,6 +29,8 @@ Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
 Route::resource('orders', 'OrderController');
 
-Route::post('/customers/{user}/carts','CartController@store');
+Route::get('/customers/{user}/carts','CartController@getCustomerCart');
+Route::post('/customers/{user}/carts','CartController@storeOrUpdate');
+Route::delete('/customers/{user}/carts/products/{id}','CartController@destroy');
 
 

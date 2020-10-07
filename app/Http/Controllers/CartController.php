@@ -11,25 +11,24 @@ class CartController extends Controller
 {
     public function getCustomerCart(User $user)
     {
-        return $user->carts;
+        return $user->cart->products;
     }
 
-    public function store(CartRequest $request, User $user)
+    public function storeOrUpdate(CartRequest $request, User $user)
     {
-      $cart =  $user->carts()->create();
-      $cart->products()->attach([$request->validated()['id'] => [
-        'sub_quantity' => $request->validated()['sub_quantity'],
-        'sub_total' => $request->validated()['sub_total']
-    ]]);
+        $cart = $user->cart;
+        if (!$cart) {
+            $cart = $user->cart()->create();
+        }
+
+        $cart->products()->syncWithoutDetaching([$request->validated()['id'] => [
+            'sub_quantity' => $request->validated()['sub_quantity'],
+            'sub_total' => $request->validated()['sub_total']
+        ]]);
     }
 
-    public function update(CartRequest $request, Cart $cart)
+    public function destroy(User $user,$id)
     {
-        $cart->update($request->validated());
-    }
-
-    public function destroy(Cart $cart)
-    {
-        $cart->delete();
+        $user->cart->products()->detach($id);
     }
 }
