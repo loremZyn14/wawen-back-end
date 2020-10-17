@@ -28,6 +28,7 @@ Route::post('/register','AuthController@register');
 Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
 Route::resource('orders', 'OrderController');
+Route::put('/orders/{order}/update-status','OrderController@updateStatus');
 
 Route::get('/customers/{user}/carts','CartController@getCustomerCart');
 Route::post('/customers/{user}/carts','CartController@storeOrUpdate');

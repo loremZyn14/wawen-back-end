@@ -29,8 +29,8 @@ class CreateOrdersTable extends Migration
             $table->string('customer_message')->nullable();
             $table->string('admin_remarks')->nullable();
             $table->double('total_amount');
-            $table->double('delivery_fee');
-            $table->double('overall_payment');
+            $table->double('delivery_fee')->nullable();
+            $table->double('overall_payment')->nullable();
             $table->timestamp('completed_date')->nullable();
             $table->timestamp('cancelled_date')->nullable();
             $table->timestamps();

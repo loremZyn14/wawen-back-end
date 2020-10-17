@@ -23,15 +23,10 @@ class AuthRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = array(
+        return [
             'email' => 'required|email',
-            'password' => 'required'
-        );
-
-        if ($this->has('username')) {
-            $rules['username'] = 'required|string';
-        }
-
-        return $rules;
+            'password' => 'required',
+            'username' => 'sometimes|string'
+        ];
     }
 }

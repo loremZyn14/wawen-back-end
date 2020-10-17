@@ -37,9 +37,9 @@ class OrderRequest extends FormRequest
             'delivery_address' => 'required|string',
             'customer_message' => 'sometimes|string',
             'admin_remarks' => 'sometimes|string',
-            'total_amount' => 'required|integer',
-            'delivery_fee' => 'required|integer',
-            'overall_payment' => 'required|integer'
+            'total_amount' => 'required',
+            'delivery_fee' => 'sometimes|integer',
+            'overall_payment' => 'sometimes|integer'
         ];
     }
 }
