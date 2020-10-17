@@ -12,15 +12,11 @@ class AuthController extends Controller
 {
     public function register(AuthRequest $request)
     {
-
-        $data = $request->validated();
-
-        $user =  User::create([
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+        User::create([
+            'username' => $request->validated()['username'],
+            'email' => $request->validated()['email'],
+            'password' => Hash::make($request->validated()['password'])
         ]);
-        return response($user);
     }
 
     public function login(AuthRequest $request)
@@ -30,11 +26,13 @@ class AuthController extends Controller
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
             return response([
-                'email' => ['The provided credentials are incorrect.'],
+                'error' => ['The provided credentials are incorrect.'],
             ],403);
         }
 
-        return $user->createToken('access_token')->plainTextToken;
+        $token = $user->createToken('access_token')->plainTextToken;
+
+        return $user->withAccessToken($token);
     }
 
     public function logout()

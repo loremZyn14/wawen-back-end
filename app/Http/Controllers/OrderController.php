@@ -21,9 +21,9 @@ class OrderController extends Controller
         return $this->orderRepository->getAllOrder();
     }
 
-    public function customer(User $user)
+    public function customer(User $account)
     {
-        return $this->orderRepository->getCustomerOrders($user);
+        return $this->orderRepository->getCustomerOrders($account);
     }
 
     public function store(OrderRequest $request)
