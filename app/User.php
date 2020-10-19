@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasOne(Cart::class, 'account_id','id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class,'account_id','id');
+    }
+
     public function userInfo()
     {
         return $this->hasOne(UserInfo::class,'account_id','id');

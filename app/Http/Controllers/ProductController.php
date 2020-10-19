@@ -14,12 +14,10 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         Product::create($request->validated());
-        return response('Product successfully added.');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
-        return response('Product successfully deleted.');
     }
 }

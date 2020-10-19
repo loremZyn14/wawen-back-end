@@ -39,8 +39,10 @@ Route::apiResource('products', 'ProductController')->except(['show']);
  * Order Route
  */
 Route::apiResource('orders', 'OrderController')->except(['show']);
-Route::get('/accounts/{account}/orders','OrderController@customer')->name('orders.customer');
+Route::get('/orders/confirmed','OrderController@confirmed');
 Route::put('/orders/{order}/update-status','OrderController@updateStatus')->name('orders.status');
+Route::get('/accounts/{account}/orders','OrderController@customer')->name('orders.customer');
+
 
 /**
  * Account Carts Route

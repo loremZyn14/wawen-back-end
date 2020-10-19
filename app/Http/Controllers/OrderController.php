@@ -26,6 +26,11 @@ class OrderController extends Controller
         return $this->orderRepository->getCustomerOrders($account);
     }
 
+    public function confirmed()
+    {
+        return $this->orderRepository->confirmed();
+    }
+
     public function store(OrderRequest $request)
     {
         $order =  Order::create($request->validated());

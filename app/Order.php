@@ -19,5 +19,10 @@ class Order extends Model
                     ->withPivot('sub_quantity', 'sub_total');
    }
 
+   public function user()
+   {
+       return $this->belongsTo(User::class,'account_id','id');
+   }
+
 
 }
