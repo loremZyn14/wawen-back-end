@@ -22,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 /**
  * Auth Route
  */
-Route::post('/login', 'AuthController@login');
-Route::post('/register','AuthController@register');
+Route::post('login', 'AuthController@login');
+Route::post('register','AuthController@register');
 
 /**
  * Categories Route
@@ -33,23 +33,28 @@ Route::apiResource('categories', 'CategoryController');
 /**
  * Products
  */
-Route::apiResource('products', 'ProductController')->except(['show']);
+Route::apiResource('products', 'ProductController')->except('show');
 
 /**
  * Order Route
  */
-Route::apiResource('orders', 'OrderController')->except(['show']);
-Route::get('/orders/confirmed','OrderController@confirmed');
-Route::put('/orders/{order}/update-status','OrderController@updateStatus')->name('orders.status');
-Route::get('/accounts/{account}/orders','OrderController@customer')->name('orders.customer');
+Route::apiResource('orders', 'OrderController')->except('show');
+Route::get('orders/confirmed','OrderController@confirmed');
+Route::put('orders/{order}/update-status','OrderController@updateStatus')->name('orders.status');
+Route::get('accounts/{account}/orders','OrderController@customer')->name('orders.customer');
 
+/**
+ * Account Route
+ */
+Route::apiResource('accounts','AccountController')->except(['index','show']);
+Route::get('accounts/{account}','AccountController@index');
 
 /**
  * Account Carts Route
  */
-Route::get('/accounts/{account}/carts','CartController@index')->name('carts.index');
-Route::post('/accounts/{account}/carts','CartController@store')->name('carts.store');
-Route::put('/accounts/{account}/carts','CartController@update')->name('carts.update');
-Route::delete('/accounts/{account}/carts/products/{product}','CartController@destroy')->name('carts.destroy');
+Route::get('accounts/{account}/carts','CartController@index')->name('carts.index');
+Route::post('accounts/{account}/carts','CartController@store')->name('carts.store');
+Route::put('accounts/{account}/carts','CartController@update')->name('carts.update');
+Route::delete('accounts/{account}/carts/products/{product}','CartController@destroy')->name('carts.destroy');
 
 
