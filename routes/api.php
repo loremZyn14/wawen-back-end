@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
  */
 Route::post('login', 'AuthController@login');
 Route::post('register','AuthController@register');
-
+Route::get('login/{provider}', 'AuthController@redirectToProvider');
+Route::get('login/{provider}/callback', 'AuthController@handleProviderCallback');
 /**
  * Categories Route
  */
