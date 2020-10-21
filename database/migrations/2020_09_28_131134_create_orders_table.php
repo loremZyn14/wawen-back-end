@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('choosen_delivery_time');
             $table->string('payment');
             $table->string('active_contact');
-            $table->string('reciever_name');
+            $table->string('receiver_name');
             $table->string('delivery_address');
             $table->string('customer_message')->nullable();
             $table->string('admin_remarks')->nullable();

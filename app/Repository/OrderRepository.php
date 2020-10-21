@@ -30,7 +30,7 @@ class OrderRepository
 
     public function confirmed()
     {
-        return Order::with('products','user')->get()->filter(function($order){
+        return Order::with('products','products.category','user')->get()->filter(function($order){
             return $order->status == "confirmed";
         });
     }
