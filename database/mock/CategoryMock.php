@@ -8,16 +8,10 @@ class CategoryMock
     {
         return array(
             array(
-                'name' => 'Snack'
+                'name' => 'Ube Halaya'
             ),
             array(
-                'name' => 'Viant'
-            ),
-            array(
-                'name' => 'Biscuit'
-            ),
-            array(
-                'name' => 'Junk Food'
+                'name' => 'Ubechi'
             ),
         );
     }
